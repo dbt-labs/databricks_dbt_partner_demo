@@ -25,7 +25,7 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 vars:
-    dbt_metrics_calendar_model: custom_calendar
+    dbt_metrics_calendar_model: all_days
 
 dispatch:
   - macro_namespace: dbt_utils
