@@ -8,4 +8,4 @@ packages:
   - package: dbt-labs/spark_utils
     version: 0.3.0
   - package: dbt-labs/metrics
-    version: 0.2.0
+    version: 0.3.1
