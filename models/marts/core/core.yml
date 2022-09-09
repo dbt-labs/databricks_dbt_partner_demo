@@ -9,6 +9,12 @@ models:
         tests:
           - unique
           - not_null
+      - name: nation
+        description: the name of a country
+        tests:
+          - accepted_values_by_relation:
+              to: ref('stg_tpch_nations')
+              field: name
                 
   - name: dim_parts
     columns:

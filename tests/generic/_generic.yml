@@ -1,0 +1,15 @@
+version: 2
+
+marcos:
+  - name: test_accepted_values_by_relation
+    description: >-
+      Test to run accepted values as a relationship test.
+      Allowing to dynamically pick values from a relation using
+      `get_column_values` from `dbt_utils` package
+    arguments:
+      - name: to
+        type: string
+        description: "the reference to the related model, syntax: `ref('<MODEL_NAME>')`"
+      - name: field
+        type: string
+        description: the column name to pick values from
