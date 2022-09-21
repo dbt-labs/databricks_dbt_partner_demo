@@ -1,0 +1,70 @@
+version: 2
+
+sources:
+  - name: twitter
+    schema: dbt_sdurry
+    quoting:
+      schema: true
+      identifier: true
+    loader: custom databricks notebook
+    tables:
+      - name: tweets
+        identifier: raw_tweets
+        description: Stream of Tweets ingested via Twitter API v2
+        meta:
+          owner: stephan.durry@dbtlabs.com
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: cast(created_at as timestamp)
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: attachments
+          - name: author_id
+          - name: context_annotations
+          - name: conversation_id
+          - name: created_at
+          - name: data
+          - name: entities
+          - name: geo
+          - name: id
+          - name: in_reply_to_user_id
+          - name: lang
+          - name: non_public_metrics
+          - name: organic_metrics
+          - name: possibly_sensitive
+          - name: promoted_metrics
+          - name: public_metrics
+          - name: referenced_tweets
+          - name: reply_settings
+          - name: source
+          - name: text
+          - name: withheld
+          - name: _rescued_data
+
+      - name: tweet_metrics
+        identifier: raw_tweet_metrics
+        description: Batch data of tweet metrics ingested once a day
+        meta:
+          owner: stephan.durry@dbtlabs.com
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: cast(updated_at as timestamp)
+        columns:
+          - name: id
+            tests:
+              - not_null
+          - name: public_metrics.like_count
+            quote: true
+          - name: public_metrics.retweet_count
+            quote: true
+          - name: public_metrics.quote_count
+            quote: true
+          - name: public_metrics.reply_count
+            quote: true
+          - name: updated_at
+          - name: rescued_data
