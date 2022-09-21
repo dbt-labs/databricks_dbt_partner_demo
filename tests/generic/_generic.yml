@@ -1,6 +1,6 @@
 version: 2
 
-marcos:
+macros:
   - name: test_accepted_values_by_relation
     description: >-
       Test to run accepted values as a relationship test.
