@@ -4,3 +4,47 @@ models:
   - name: agg_yearly_parts_hardcoded_pivot
     columns:
       - name: order_year
+  - name: agg_tweets
+    description: fct and dim tables joined. To be exposed on the BI layer.
+    columns:
+      - name: tweet_id
+        description: Unique identifier for a tweet
+        tests:
+          - unique
+          - not_null
+      - name: author_id
+        description: The foreign key for a twitter user
+      - name: source_name
+        description:  the name of the app where the tweet was send from 
+      - name: language_name
+        description: >-
+          The language the tweet was edited in.
+          We filter out all languages except: en, it, es, de, fr
+      - name: tweet_text
+        description: The content of the tweet
+      - name: created_at
+        description: timestamp of creation in `UTC`
+      - name: clean_tweet_text
+        description: "`tweets_text` without mentions, hashtags and URLs"
+      - name: links
+        description: the count of links used in a tweet
+      - name: hashtags
+        description: the count of hashtags used in a tweet
+      - name: mentions
+        description: the count of mentions used in a tweet
+      - name: is_deleted
+        description: bool, if a tweet is still active
+      - name: likes
+        description: the number of likes generated to date
+      - name: retweets
+        description: the number of retweets generated to date
+      - name: replies
+        description: the number of replies generated to date
+      - name: quotes
+        description: the number of quotes generated to date
+      - name: total_engagements
+        description: the sum of all engagements 
+      - name: updated_at
+        description: the Loading timestamp of a record
+  - name: agg_retweet_timeseries
+    description: A timeseries dataset of the `retweet` metric across days by language
