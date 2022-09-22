@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: dim_tweets
+    description: a table collecting all tweet metadata
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('stg_tweets')
+      - dbt_utils.recency:
+          datepart: day
+          field: created_at
+          interval: 1
+    columns:
+      - name: tweet_id
+        description: Unique identifier for a tweet
+        tests:
+          - unique
+          - not_null
+      - name: author_id
+        description: The foreign key for a twitter user
+        tests:
+          - not_null
+      - name: source_name
+        description:  the name of the app where the tweet was send from 
+      - name: language_name
+        description: >-
+          The language the tweet was edited in.
+          We filter out all languages except: en, it, es, de, fr
+        tests:
+          - accepted_values:
+              values: ['English', 'Italian', 'Spanish', 'German', 'French']
+      - name: tweet_text
+        description: The content of the tweet
+      - name: created_at
+        description: timestamp of creation in `UTC`
+      - name: clean_tweet_text
+        description: "`tweets_text` without mentions, hashtags and URLs"
+      - name: links
+        description: an array of links used in a tweet
+      - name: hashtags
+        description: an array of hashtags used in a tweet
+      - name: mentions
+        description: an array of mentions used in a tweet
+      - name: is_deleted
+        description: bool, if a tweet is still active
+
+  - name: fct_tweets
+    description: fact model for tweets
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "likes + retweets + replies + quotes = total_engagements"
+      - dbt_utils.recency:
+          datepart: day
+          field: updated_at
+          interval: 1
+    columns:
+      - name: tweet_id
+        description: the foreign key of a tweet
+        tests:
+          - not_null
+          - unique
+      - name: likes
+        description: the number of likes generated to date
+      - name: retweets
+        description: the number of retweets generated to date
+      - name: replies
+        description: the number of replies generated to date
+      - name: quotes
+        description: the number of quotes generated to date
+      - name: total_engagements
+        description: the sum of all engagements 
+      - name: updated_at
+        description: the Loading timestamp of a record
+
+
+  - name: int_deleted_tweets
+    description: intermediate step to detect deleted tweets
