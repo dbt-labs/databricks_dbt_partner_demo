@@ -6,11 +6,15 @@ sources:
     quoting:
       schema: true
       identifier: true
-    loader: custom databricks notebook
+    loader: Databricks notebook
     tables:
       - name: tweets
         identifier: raw_tweets
-        description: Stream of Tweets ingested via Twitter API v2
+        description: >- 
+          "Stream of Tweets ingested via Twitter API v2. Exposed using a DLT `CREATE STREAMING LIVE TABLE` statement
+          [Link to notebook](https://dbc-c7c89cba-cf9b.cloud.databricks.com/#notebook/282962185456694/command/282962185456695)
+          [Link to DLT Pipeline](https://dbc-c7c89cba-cf9b.cloud.databricks.com/?o=3718560678585456#joblist/pipelines/ec0633bc-a9a3-4c08-8e50-6e8c61b380b9/updates/f22aee9d-9d55-4d15-bb18-8c0dc8242080)
+          **For cost reasons this script is scheduled and only illustrates streaming data.**"
         meta:
           owner: stephan.durry@dbtlabs.com
         freshness:
@@ -47,7 +51,10 @@ sources:
 
       - name: tweet_metrics
         identifier: raw_tweet_metrics
-        description: Batch data of tweet metrics ingested once a day
+        description: >-
+          "Batch data of tweet metrics ingested once a day. Exposed using a DLT `CREATE STREAMING LIVE TABLE` statement.
+          [Link to notebook](https://dbc-c7c89cba-cf9b.cloud.databricks.com/?o=3718560678585456#notebook/2754430239328354/command/2754430239328357)
+          [Link to DLT Pipeline](https://dbc-c7c89cba-cf9b.cloud.databricks.com/?o=3718560678585456#joblist/pipelines/ec0633bc-a9a3-4c08-8e50-6e8c61b380b9/updates/f22aee9d-9d55-4d15-bb18-8c0dc8242080)"
         meta:
           owner: stephan.durry@dbtlabs.com
         freshness:
