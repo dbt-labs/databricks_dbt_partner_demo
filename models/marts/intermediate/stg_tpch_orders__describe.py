@@ -1,7 +1,6 @@
 def model(dbt, session):
     dbt.config(
         materialized = "table",
-        packages = ["holidays"], #import pypi holidays package
         create_notebook=True, # writes to /Shared/dbt_python_model/
         cluster_id="0408-145556-egmplhh0"
     )
