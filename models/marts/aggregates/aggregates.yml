@@ -1,6 +1,0 @@
-version: 2
-
-models:
-  - name: agg_yearly_parts_hardcoded_pivot
-    columns:
-      - name: order_year
