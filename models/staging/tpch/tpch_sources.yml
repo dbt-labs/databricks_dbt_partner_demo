@@ -3,11 +3,8 @@ version: 2
 
 sources:
   - name: tpch
-<<<<<<< HEAD
-    database: hive_metastore
-=======
+    database: samples
     description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
->>>>>>> 71767f4935e7ba9c13006ec51608d6e09869d743
     schema: tpch
     tables:
       - name: orders
