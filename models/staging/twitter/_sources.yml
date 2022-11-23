@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: twitter
+    database: hive_metastore
     schema: dbt_sdurry
     quoting:
       schema: true
