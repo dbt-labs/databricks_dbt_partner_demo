@@ -2,6 +2,10 @@ version: 2
 
 sources:
   - name: twitter
+<<<<<<< HEAD
+=======
+    database: hive_metastore
+>>>>>>> 0f76b61962d5c411cdc14b5f3b6be41db9eb0175
     schema: dbt_sdurry
     quoting:
       schema: true
