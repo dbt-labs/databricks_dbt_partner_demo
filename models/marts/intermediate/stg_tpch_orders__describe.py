@@ -1,7 +1,7 @@
 def model(dbt, session):
     dbt.config(
-        materialized = "table",
-        create_notebook=True, # writes to /Shared/dbt_python_model/
+        materialized="table",
+        create_notebook=False, # True writes to /Shared/dbt_python_model/
         cluster_id="0408-145556-egmplhh0"
     )
 
