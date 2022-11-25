@@ -13,9 +13,9 @@ models:
         description: region name
         tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE']
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
               # severity: warn
-              # ,'AMERICA'
+              
       - name: name
         description: customer id
       - name: address
