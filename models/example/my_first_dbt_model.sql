@@ -10,7 +10,7 @@ with source_data as (
 
     select 
         1 as id
-        ,'Hello databricks' as my_string
+        ,'Hallo dbt Fans' as my_string
 --        ,2 as my_new_column
 
 )
