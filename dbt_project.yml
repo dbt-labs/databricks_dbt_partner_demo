@@ -41,6 +41,8 @@ dispatch:
 models:
   file_format: delta
   incremental_strategy: merge
+  +grants:
+    select: ['Partner Engineers']
 
   databricks_demo:
       # Applies to all files under models/example/
@@ -50,4 +52,6 @@ models:
           materialized: table
       marts:
           materialized: table
+
+on-run-start: "grant usage on schema {{target.database}}.{{target.schema}} to `Partner Engineers`"
     
