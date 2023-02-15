@@ -9,6 +9,11 @@ models:
         tests:
           - unique
           - not_null
+      - name: region
+        description: the name of a customer's region
+        tests:
+          - accepted_values:
+              values: ['AFRICA', 'MIDDLE EAST', 'ASIA', 'AMERICA']
                 
   - name: dim_parts
     columns:
