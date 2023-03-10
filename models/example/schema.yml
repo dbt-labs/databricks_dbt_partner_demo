@@ -19,3 +19,17 @@ models:
             tests:
                 - unique
                 - not_null
+
+    - name: my_first_dbt_py_model
+      description: "A starter dbt python model"
+      columns:
+        - name: summary
+        - name: customer_key
+        - name: region
+        - name: name
+        - name: address
+        - name: nation
+        - name: phone_number
+        - name: account_balance
+        - name: market_segment
+      
