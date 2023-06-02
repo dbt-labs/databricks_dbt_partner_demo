@@ -3,8 +3,8 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'databricks_demo'
-version: '1.3.0'
-require-dbt-version: '>=1.3.0'
+version: '1.4.0'
+require-dbt-version: '>=1.4.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
@@ -41,6 +41,8 @@ dispatch:
 models:
   file_format: delta
   incremental_strategy: merge
+  +grants:
+    select: ['Partner Engineers']
 
   databricks_demo:
       # Applies to all files under models/example/
@@ -50,4 +52,6 @@ models:
           materialized: table
       marts:
           materialized: table
+
+on-run-start: "grant usage on schema {{target.database}}.{{target.schema}} to `Partner Engineers`"
     
