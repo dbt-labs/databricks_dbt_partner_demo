@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized = 'materialized_view',
-        transient=false
-    )
-}}
-
 with customer as (
 
     select * from {{ ref('stg_tpch_customers') }}
