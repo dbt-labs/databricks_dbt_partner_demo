@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='materialized_view'
+    )
+}}
+
 with source as (
 
     select * from {{ source('tpch', 'customer') }}
