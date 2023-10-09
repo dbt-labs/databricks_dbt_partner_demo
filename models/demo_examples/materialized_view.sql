@@ -4,4 +4,4 @@
     )
 }}
 
-select * from {{ ref('streaming_table') }}
+select * from {{ ref('dim_customers') }}
