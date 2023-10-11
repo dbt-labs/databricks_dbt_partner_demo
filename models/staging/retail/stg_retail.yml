@@ -13,6 +13,7 @@ models:
  
   - name: stg_retail_sales_orders
     description: staging model that de-dupes orders data
+    access: public
     columns:
       - name: order_number
         description: id for customer orders
@@ -22,6 +23,7 @@ models:
 
   - name: stg_retail_sales_order_items
     description: staging model that unpacks JSON object to allow for querying of order items
+    access: public
     tests: 
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
