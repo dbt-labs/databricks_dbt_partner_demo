@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: retail
+    database: raw
+    schema: retail
+    tables:
+      - name: customers
+      - name: sales_orders
