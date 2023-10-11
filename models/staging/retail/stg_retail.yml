@@ -3,6 +3,7 @@ version: 2
 models:
   - name: stg_retail_customers
     description: staging model that includes only current customer records
+    access: public
     columns:
       - name: customer_id
         description: unique id for each customer
