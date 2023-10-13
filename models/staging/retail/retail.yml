@@ -4,6 +4,7 @@ sources:
   - name: retail
     database: raw
     schema: retail
+    description: a raw data source (loaded in from postgres) 
     tables:
       - name: customers
       - name: sales_orders
