@@ -1,6 +1,7 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        databricks_compute= 'Compute1'
     )
 }}
 
