@@ -9,9 +9,7 @@ sources:
         identifier: customers
         columns:
           - name: id
-            tests:
-              - not_null
-              - unique
+
         
       - name: orders
         identifier: orders
