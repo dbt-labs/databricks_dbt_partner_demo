@@ -45,9 +45,6 @@ models:
     select: ['Partner Engineers']
 
   databricks_demo:
-      # Applies to all files under models/example/
-      example:
-          materialized: view
       staging:
           materialized: table
       marts:
