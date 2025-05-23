@@ -1,4 +1,9 @@
-
+{{
+    config(
+        materialized='table',
+        database = 'test'
+    )
+}}
 with
 
 source as (
