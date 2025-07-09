@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: information_schema
+    database: samples         # or your actual catalog/database name
+    schema: information_schema
+    description: Information schema tables.
+
+    tables:
+      - name: catalog_privileges
+      - name: catalog_tags
+      - name: catalogs
+      - name: check_constraints
+      - name: column_masks
+      - name: column_tags
+      - name: columns
+      - name: constraint_column_usage
+      - name: constraint_table_usage
+      - name: information_schema_catalog_name
+      - name: key_column_usage
+      - name: parameters
+      - name: referential_constraints
+      - name: routine_columns
+      - name: routine_privileges
+      - name: routines
+      - name: row_filters
+      - name: schema_privileges
+      - name: schema_tags
+      - name: schemata
+      - name: table_constraints
+      - name: table_privileges
+      - name: table_tags
+      - name: tables
+      - name: views
+      - name: volume_privileges
+      - name: volume_tags
+      - name: volumes
