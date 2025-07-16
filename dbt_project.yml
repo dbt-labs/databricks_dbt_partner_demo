@@ -41,14 +41,18 @@ dispatch:
 models:
   file_format: delta
   incremental_strategy: merge
-  +grants:
-    select: ['Partner Engineers']
 
   databricks_demo:
       staging:
           materialized: table
       marts:
           materialized: table
+          iceberg_demo:
+            +schema: amy_iceberg_prod
+            +access: public
+            +tblproperties:
+                delta.enableIcebergCompatV2: 'true'
+                delta.universalFormat.enabledFormats: iceberg
 
-on-run-start: "grant usage on schema {{target.database}}.{{target.schema}} to `Partner Engineers`"
+
     
