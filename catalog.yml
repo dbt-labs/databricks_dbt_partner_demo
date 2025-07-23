@@ -1,0 +1,16 @@
+
+catalogs:
+  - name: unity_catalog
+    active_write_integration: databricks_unity_catalog
+    write_integrations:
+      - name: databricks_unity_catalog
+        table_format: iceberg
+        catalog_type: built_in
+
+  - name: unity_catalog
+    read_integrations:
+      - name: snowflake_unity_catalog_integration
+        adapter_type: snowflake
+        profile: snowflake_profile
+        table_format: iceberg
+        catalog_type: iceberg_rest
