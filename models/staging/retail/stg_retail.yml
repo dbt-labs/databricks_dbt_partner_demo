@@ -37,9 +37,6 @@ models:
   - name: stg_retail_customers
     description: staging model that includes only current customer records
     access: public
-    config:
-      grants:
-        select: ['transformer']
     columns:
       - name: customer_id
         description: unique id for each customer
