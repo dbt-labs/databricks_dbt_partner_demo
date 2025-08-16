@@ -1,0 +1,51 @@
+semantic_models:
+  - name: locations
+    description: |
+      Location dimension table. The grain of the table is one row per location.
+    model: ref('stg_jaffle_locations')
+    defaults:
+      agg_time_dimension: opened_at
+    entities:
+      - name: location
+        type: primary
+        expr: location_id
+    dimensions:
+      - name: location_name
+        type: categorical
+      - name: opened_at
+        expr: opened_at
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: average_tax_rate
+        description: Average tax rate.
+        expr: tax_rate
+        agg: average
+
+semantic_models:
+  #The name of the semantic model.
+  - name: stg_jaffle_products
+    description: |
+      Product dimension table. The grain of the table is one row per product.
+    #The name of the dbt model and schema
+    model: ref('stg_jaffle_products')
+    #Entities. These usually corespond to keys in the table.
+    entities:
+      - name: product
+        type: primary
+        expr: product_id
+    #Dimensions. Either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions:
+      - name: product_name
+        type: categorical
+      - name: product_type
+        type: categorical
+      - name: product_description
+        type: categorical
+      - name: is_food_item
+        type: categorical
+      - name: is_drink_item
+        type: categorical
+      - name: product_price
+        type: categorical
