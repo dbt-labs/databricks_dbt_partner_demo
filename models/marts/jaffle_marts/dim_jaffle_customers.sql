@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        database = 'test'
     )
 }}
 
