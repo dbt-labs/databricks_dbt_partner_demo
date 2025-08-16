@@ -1,10 +1,8 @@
 version: 2
- 
+
 models:
- 
   - name: stg_retail_sales_orders
     description: staging model that de-dupes orders data
-    access: public
     columns:
       - name: order_number
         description: id for customer orders
@@ -12,34 +10,41 @@ models:
           - unique
           - not_null
 
+    config:
+      access: public
   - name: stg_retail_sales_order_items
     description: staging model that unpacks JSON object to allow for querying of order items
-    access: public
-    tests: 
+    tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - order_number
-            - product_id
-            - price
+          arguments:
+            combination_of_columns:
+              - order_number
+              - product_id
+              - price
     columns:
       - name: customer_id
         tests:
           - not_null
           - relationships:
-              to: ref('stg_retail_sales_orders')
-              field: customer_id
+              arguments:
+                to: ref('stg_retail_sales_orders')
+                field: customer_id
       - name: currency
         description: currency of the product price
         tests:
           - accepted_values:
-              values: ['USD']
+              arguments:
+                values: ['USD']
 
+    config:
+      access: public
   - name: stg_retail_customers
     description: staging model that includes only current customer records
-    access: public
     columns:
       - name: customer_id
         description: unique id for each customer
         tests:
           - unique
           - not_null
+    config:
+      access: public
