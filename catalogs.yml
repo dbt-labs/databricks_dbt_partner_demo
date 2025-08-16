@@ -1,0 +1,8 @@
+catalogs:
+  - name: partner_engineering_demo_dev
+    active_write_integration: unity_catalog
+    write_integrations:
+      - name: unity_catalog
+        external_volume: dbt_external_volume
+        table_format: iceberg
+        catalog_type: unity

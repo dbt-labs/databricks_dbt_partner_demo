@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='table',
+        database = 'test'
+    )
+}}
+
 with
 
 customers as (

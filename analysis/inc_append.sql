@@ -1,15 +1,7 @@
 --just using this to show the difference between append and merge 
 --(append gets dupes if old records are updated in the seed)
 
-{{
-  config(
-    materialized='incremental',
-    incremental_strategy='append',
-    unique_key='id',
-    file_format='delta',
-    partition_by='date_month'
-  )
-}}
+{{ config(meta={'materialized': 'incremental', 'incremental_strategy': 'append', 'unique_key': 'id', 'file_format': 'delta', 'partition_by': 'date_month'}) }}
 
 select 
   id, 
